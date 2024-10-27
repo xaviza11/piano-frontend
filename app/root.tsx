@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  redirect
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import Footer from "./components/Footer";
@@ -30,13 +31,15 @@ export const links: LinksFunction = () => [
   },
 ];
 
-// This loader retrieves a guestToken or renovates if it exists
 export const loader: LoaderFunction = async ({ request }) => {
   const guestTokenResponse = await manageGuestToken(request);
-  
-  return {
-    guestTokenResponse,
-  };
+
+  const url = new URL(request.url);
+  if (guestTokenResponse.status !== 200 && url.pathname !== '/500') {
+    return redirect("/500"); 
+  }
+
+  return {guestTokenResponse} 
 };
 
 export function Layout({ children }) {

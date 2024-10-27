@@ -1,3 +1,4 @@
+// src/App.tsx
 import {
   Links,
   Meta,
@@ -10,6 +11,7 @@ import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import Footer from "./components/Footer";
 import { manageGuestToken } from "./plugins/manageGuestToken";
 import { manageCookiesBanner } from "./plugins/manageCookiesBanner";
+import { AlertProvider } from './context/AlertContext';
 
 import "./tailwind.css";
 import Navbar from "./components/NavBar";
@@ -28,7 +30,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-// This loader retrieve a guestToken or renovate if exist
+// This loader retrieves a guestToken or renovates if it exists
 export const loader: LoaderFunction = async ({ request }) => {
   const guestTokenResponse = await manageGuestToken(request);
   
@@ -60,6 +62,8 @@ export function Layout({ children }) {
 
 export default function App() {
   return (
+    <AlertProvider>
       <Outlet />
+    </AlertProvider>
   );
 }

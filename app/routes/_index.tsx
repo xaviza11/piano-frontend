@@ -1,7 +1,6 @@
-import { useState } from "react";
-import type { MetaFunction } from "@remix-run/node";
+import { MetaFunction } from "@remix-run/node";
 import SearchSongs from "~/components/SearchSongs";
-import Alert from "~/components/Alert";
+import { useAlert } from "~/context/AlertContext"; // Asegúrate de que la ruta sea correcta
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,20 +10,15 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const [isAlertVisible, setIsAlertVisible] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [alertType, setAlertType] = useState<'info' | 'error' | 'warning' | 'info'>("info")
-  const [isAlertDismissible, setIsAlertDismissible] = useState(true)
+  const { showAlert } = useAlert();
 
-  const handlerOpenAlert = () => { //warn This is only one example for open alert, delete it at create the handler
-    setAlertMessage("Hello! This is an alert.");
-    setIsAlertVisible(true); 
+  const handlerOpenAlert = () => {
+    showAlert("Hello! This is an alert.", "info", true); 
   };
 
   return (
     <div className="flex h-screen items-center justify-center bg-white">
       <div className="flex flex-col items-center gap-16">
-        {isAlertVisible && (<Alert message={alertMessage} type={alertType} dismissible={isAlertDismissible} onClose={() => setIsAlertVisible(false)}/>)}
         <SearchSongs />
       </div>
     </div>

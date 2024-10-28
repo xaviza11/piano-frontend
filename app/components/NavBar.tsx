@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const userName = undefined; // Simulando que el usuario no está autenticado
+import Cookies from 'universal-cookie';
 
 const Navbar: React.FC = () => {
+  const cookies = new Cookies();
+  const userName = cookies.get('username'); 
+
   return (
     <nav className="bg-blue-600 shadow-lg fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +45,7 @@ const Navbar: React.FC = () => {
 
           {userName ? (
             <div className="text-white text-sm font-medium">
-              Welcome, {userName}
+              {userName}
             </div>
           ) : (
             <div className="hidden md:flex space-x-4">

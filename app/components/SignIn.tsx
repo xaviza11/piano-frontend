@@ -1,17 +1,47 @@
 import React, { useState } from 'react';
+import { useNavigate } from '@remix-run/react';
+import { useAlert } from '~/context/AlertContext';
+import { authenticateUser } from '~/handlers/authenticate';
+import Cookies from 'universal-cookie';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = () => {
+  const navigate = useNavigate();
+  const { showAlert } = useAlert();
+  const cookies = new Cookies();
+
+  const handleSubmit = async () => {
     if (!email || !password) {
       setError("Email and password are required.");
       return;
     }
-    
-    console.log('Sign In:', { email, password });
+
+    const existingUsername = cookies.get('username');
+    const existingAccessToken = cookies.get('accessToken');
+    if (typeof existingUsername === 'string' && typeof existingAccessToken === 'string') {
+      showAlert("Session is already active.", "warning", true);
+      return;
+    }
+
+    try {
+      const response = await authenticateUser(email, password);
+      const result = await response.json();
+
+      const expires = new Date();
+      expires.setDate(expires.getDate() + 7); 
+
+      cookies.set('username', result.username, { path: '/', expires });
+      cookies.set('accessToken', result.access_token, { path: '/', expires });
+      cookies.set('accessTokenDate', result.date, { path: '/', expires });
+
+      navigate("/");
+    } catch (error: any) {
+      showAlert(error.message, "warning", true);
+    }
+
     setError(null);
   };
 
@@ -30,7 +60,7 @@ const SignIn: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email address"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 bg-white"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white"
         />
       </div>
 
@@ -44,7 +74,7 @@ const SignIn: React.FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 bg-white"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white"
         />
       </div>
 

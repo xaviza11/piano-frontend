@@ -1,4 +1,3 @@
-// src/App.tsx
 import {
   Links,
   Meta,
@@ -11,6 +10,7 @@ import {
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import Footer from "./components/Footer";
 import { manageGuestToken } from "./plugins/manageGuestToken";
+import { manageAccessToken } from './plugins/manageAccessToken';
 import { AlertProvider } from './context/AlertContext';
 import Cookies from "universal-cookie";
 import "./tailwind.css";
@@ -32,16 +32,26 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const cookies = new Cookies(request.headers.get('cookie'), { path: '/' });
+  const cookies = new Cookies(request.headers.get("cookie"), { path: "/" });
   const guestToken = cookies.get("guestToken");
   const guestTokenDate = cookies.get("guestTokenDate");
+  const accessToken = cookies.get("accessToken");
+  const accessTokenDate = cookies.get("accessTokenDate");
 
-  try{
-  const guestTokenResponse = await manageGuestToken(guestToken, guestTokenDate);
-  const { token, date, message } = guestTokenResponse;
-  return { token, date, message };
-  }catch(error){
-    return { token: 'none', date: 'none', message:'Falied to fetch' };
+  try {
+    const guestTokenResponse = await manageGuestToken(guestToken, guestTokenDate);
+    const accessTokenResponse = await manageAccessToken(accessToken, accessTokenDate);
+
+    return {
+      guestToken: guestTokenResponse.token,
+      guestTokenDate: guestTokenResponse.date,
+      guestTokenMessage: guestTokenResponse.message,
+      accessToken: accessTokenResponse.token,
+      accessTokenDate: accessTokenResponse.date,
+      accessTokenMessage: accessTokenResponse.message
+    };
+  } catch (error) {
+    return { guestToken: 'none', guestTokenDate: 'none', guestTokenMessage: 'Failed to fetch', accessToken: 'none', accessTokenDate: 'none', accessTokenMessage: 'Failed to fetch' };
   }
 };
 
@@ -67,7 +77,7 @@ export function Layout({ children }) {
 }
 
 export default function App() {
-  const { token, date, message } = useLoaderData();
+  const { guestToken, guestTokenDate, guestTokenMessage, accessToken, accessTokenDate, accessTokenMessage } = useLoaderData();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -75,15 +85,23 @@ export default function App() {
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
 
-    if (message !== "Token created" && message !== "Token is valid")  {
-      if(typeof message !== 'string') return
-      cookies.remove("guestToken", { path: '/' });
-      cookies.remove("guestTokenDate", { path: '/' });
-      cookies.remove("userName", {path: "/"})
+    if (guestTokenMessage !== "Token created" && guestTokenMessage !== "Token is valid") {
+      cookies.remove("guestToken", { path: "/" });
+      cookies.remove("guestTokenDate", { path: "/" });
+      cookies.remove("userName", { path: "/" });
       navigate("/500");
     } else {
-      cookies.set('guestToken', token.toString(), { path: '/', httpOnly: false, secure: false, expires });
-      cookies.set('guestTokenDate', new Date(date).toISOString(), { path: '/', httpOnly: false, secure: false, expires });
+      cookies.set("guestToken", guestToken, { path: "/", expires });
+      cookies.set("guestTokenDate", new Date(guestTokenDate).toISOString(), { path: "/", expires });
+    }
+
+    if (accessTokenMessage === "Token renewed successfully" || accessTokenMessage === "Token is valid") {
+      cookies.set("accessToken", accessToken, { path: "/", expires });
+      cookies.set("accessTokenDate", new Date(accessTokenDate).toISOString(), { path: "/", expires });
+    } else if (accessTokenMessage === "Failed to renew token") {
+      cookies.remove("accessToken", { path: "/" });
+      cookies.remove("accessTokenDate", { path: "/" });
+      navigate("/500");
     }
   }, []);
 

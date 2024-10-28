@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 const Navbar: React.FC = () => {
-  const cookies = new Cookies();
-  const userName = cookies.get('username'); 
+  const [userName, setUserName] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const cookies = new Cookies();
+    setUserName(cookies.get('username'));
+  }, []);
 
   return (
     <nav className="bg-blue-600 shadow-lg fixed top-0 w-full z-50">
@@ -16,28 +20,16 @@ const Navbar: React.FC = () => {
 
           <div className="flex-grow flex justify-center">
             <div className="hidden md:flex space-x-4">
-              <Link
-                to="/piano"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
+              <Link to="/piano" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Piano
               </Link>
-              <Link
-                to="/player"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
+              <Link to="/player" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Piano Player
               </Link>
-              <Link
-                to="/search-song"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
+              <Link to="/search-song" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Search Song
               </Link>
-              <Link
-                to="/upload-song"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
+              <Link to="/upload-song" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Upload Song
               </Link>
             </div>
@@ -45,20 +37,14 @@ const Navbar: React.FC = () => {
 
           {userName ? (
             <div className="text-white text-sm font-medium">
-              {userName}
+              Welcome, {userName}
             </div>
           ) : (
             <div className="hidden md:flex space-x-4">
-              <Link
-                to="/signin"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
+              <Link to="/signin" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Sign In
               </Link>
-              <Link
-                to="/register"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
+              <Link to="/register" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Register
               </Link>
             </div>

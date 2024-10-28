@@ -1,5 +1,6 @@
 // app/components/Alert.tsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface AlertProps {
   message: string;
@@ -15,14 +16,20 @@ const Alert: React.FC<AlertProps> = ({
   onClose 
 }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (message.includes('redirect')) {
+      navigate("/500");
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsVisible(false);
       if (onClose) onClose();
     }, 5000); 
     return () => clearTimeout(timer);
-  }, [onClose]);
+  }, []);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -57,6 +64,8 @@ const Alert: React.FC<AlertProps> = ({
     }
   };
 
+  if(message.includes('redirect')) return null
+  
   return (
     <div className={`fixed inset-0 flex items-center justify-center z-50 p-4 bg-black bg-opacity-30`}>
       <div

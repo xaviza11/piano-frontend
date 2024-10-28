@@ -1,5 +1,4 @@
-import { API_URL } from "~/utils/client.envoriment";
-import { guestTokenCookie, guestTokenDate } from "~/utils/cookies";
+import { API_URL } from "~/utils/client.environment";
 
 export async function generateGuestToken() {
   try {
@@ -11,23 +10,9 @@ export async function generateGuestToken() {
       throw new Error("Error generating guest token");
     }
 
-    const { guest_token, date } = await response.json();
+    const { guest_token, date, message } = await response.json();
 
-    const cookie1 = await guestTokenCookie.serialize({
-      guest_token,
-    });
-
-    const cookie2 = await guestTokenDate.serialize({
-      date: date,
-    });
-
-    const headers = new Headers();
-    headers.append("Set-Cookie", cookie1);
-    headers.append("Set-Cookie", cookie2)
-
-    return new Response("Token created", {
-      headers,
-    });
+    return { message, guest_token, date };
   } catch (error) {
     console.error("Error generating guest token:", error);
     throw error;

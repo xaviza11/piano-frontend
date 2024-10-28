@@ -1,49 +1,51 @@
-import { guestTokenCookie, guestTokenDate } from "~/utils/cookies";
-import { generateGuestToken } from "~/handlers/generateGuestToken"; 
+import { generateGuestToken } from "~/handlers/generateGuestToken";
 import { renewGuestToken } from '~/handlers/renewGuestToken';
 import { json, redirect } from "@remix-run/node";
 
-export async function manageGuestToken(request: Request) {
-  const cookieHeader = request.headers.get("Cookie");
-  const cookies = {
-    guestToken: await guestTokenCookie.parse(cookieHeader),
-    guestTokenDate: await guestTokenDate.parse(cookieHeader),
-  };
-
+export async function manageGuestToken(guestToken: string | null, guestTokenDate: string | null) {
   const currentTime = new Date();
-  const tokenDate = cookies.guestTokenDate ? new Date(cookies.guestTokenDate.date) : null;
+  const tokenDate = guestTokenDate ? new Date(guestTokenDate) : null;
 
-  if (!cookies.guestToken || !cookies.guestTokenDate) {
-    return await generateGuestToken();
+  if (!guestToken || !guestTokenDate) {
+    const tokenResponse = await handleTokenGeneration();
+    if (tokenResponse.message !== "Token created") {
+      return { message: "Failed to generate token" };
+    }
+    return tokenResponse;
   }
 
   if (tokenDate) {
     const timeDiff = currentTime.getTime() - tokenDate.getTime();
-    const oneDay = 24 * 60 * 60 * 1000;
+    const oneDayInMillis = 24 * 60 * 60 * 1000;
 
-    if (timeDiff < oneDay) {
-      return await renewGuestTokenHandler(cookies.guestToken);
+    if (timeDiff >= oneDayInMillis) {
+      const renewalResponse = await handleTokenRenewal(guestToken);
+      if (renewalResponse.message !== "Token renewed successfully") {
+        return { message: "Failed to renew token" };
+      }
+      return renewalResponse;
     }
   }
 
-  return json({ message: "Token is valid", token: cookies.guestToken, date: tokenDate });
+  return { message: "Token is valid", token: guestToken, date: tokenDate };
 }
 
-async function renewGuestTokenHandler(token: string) {
-  const response = await renewGuestToken(token);
+async function handleTokenGeneration() {
+  const result = await generateGuestToken();
 
-  if (response.ok) {
-    const { guest_token, date } = await response.json();
-
-    const newGuestTokenCookie = await guestTokenCookie.serialize({ guest_token });
-    const newGuestTokenDateCookie = await guestTokenDate.serialize({ date });
-
-    const headers = new Headers();
-    headers.append("Set-Cookie", newGuestTokenCookie);
-    headers.append("Set-Cookie", newGuestTokenDateCookie);
-
-    return json({ message: "Token renewed successfully", token: guest_token, date }, { headers });
+  if (result.message === 'Token created') {
+    return { message: result.message, token: result.guest_token, date: result.date };
   }
 
-  return new Response("Failed to renew token", { status: 500 });
+  return { message: "Failed to generate guest token" };
+}
+
+async function handleTokenRenewal(token: string) {
+  const result = await renewGuestToken(token);
+
+  if (result.message === 'Token renewed successfully') {
+    return { message: result.message, token: result.guest_token, date: result.date };
+  }
+
+  return { message: "Failed to renew guest token" };
 }

@@ -1,6 +1,6 @@
 import { MetaFunction } from "@remix-run/node";
 import SearchSongs from "~/components/SearchSongs";
-import { useAlert } from "~/context/AlertContext"; // Asegúrate de que la ruta sea correcta
+import { useAlert } from "~/context/AlertContext"; 
 
 export const meta: MetaFunction = () => {
   return [

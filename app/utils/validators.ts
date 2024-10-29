@@ -13,4 +13,13 @@ function isValidEmail(email:string) {
     return usernameRegex.test(username);
   }
 
-  export {isValidEmail, isValidPassword, isValidUserName}
+  function isValidTone(tone: string): boolean {
+    const validTones = [
+        "C Major", "C# Major", "D Major", "D# Major", "E Major", "F Major", "F# Major", "G Major", "G# Major", "A Major", "A# Major", "B Major",
+        "C Minor", "C# Minor", "D Minor", "D# Minor", "E Minor", "F Minor", "F# Minor", "G Minor", "G# Minor", "A Minor", "A# Minor", "B Minor"
+    ];
+    return validTones.includes(tone);
+}
+
+
+  export {isValidEmail, isValidPassword, isValidUserName, isValidTone}

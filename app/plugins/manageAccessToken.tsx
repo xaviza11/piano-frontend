@@ -5,7 +5,10 @@ export async function manageAccessToken(accessToken: string, accessTokenDate: st
   const currentTime = new Date();
   const tokenDate = accessTokenDate ? new Date(accessTokenDate) : null;
 
-  if (tokenDate) {
+  if(!accessToken || !tokenDate){
+    return {message: "User nor signed in"}
+  }
+  else {
     const timeDiff = currentTime.getTime() - tokenDate.getTime();
     const oneDayInMillis = 24 * 60 * 60 * 1000;
 

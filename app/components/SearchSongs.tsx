@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import {searchSongs} from '~/handlers/searchSongs'
+import { useAlert } from '~/context/AlertContext';
+import { useSongsListStore } from '~/store';
 
 const TONES = [
   'C Major', 'C Minor', 'C# Major', 'C# Minor', 
@@ -9,30 +12,30 @@ const TONES = [
   'A# Major', 'A# Minor', 'B Major', 'B Minor',
 ];
 
-interface Song {
-  id: string;
-  name: string;
-  author: string;
-  tone: string;
-  notes: string;
-  user: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 const SearchSongs: React.FC = () => {
-  const [name, setName] = useState<string>('');
-  const [author, setAuthor] = useState<string>('');
-  const [tone, setTone] = useState<string>('');
-  const [songs, setSongs] = useState<Song[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [name, setName] = useState<string | undefined>(undefined);
+  const [author, setAuthor] = useState<string | undefined>(undefined);
+  const [tone, setTone] = useState<string | undefined>(undefined);
 
+  const {setSongsList} =useSongsListStore()
+
+  const {showAlert} = useAlert()
+  
   const handleSearch = async () => {
- 
+    const query = {name, tone, author}
+
+    try {
+      const response = await searchSongs(query)
+      showAlert(response.message, "success", true)
+      setSongsList(response.songs)
+    }catch(error:any){
+      showAlert(error.message, "warning", true) 
+    }
+
   };
 
   return (
-    <div className="p-6 max-w-lg mx-auto bg-white border border-blue-400 rounded-lg">
+    <div className="p-11 max-w-lg mx-auto bg-white border border-blue-400 rounded-lg mt-1 h-[28rem] text-black">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Search Songs</h2>
       
       <div className="mb-4">
@@ -86,22 +89,6 @@ const SearchSongs: React.FC = () => {
       >
         Search
       </button>
-
-      {error && <p className="text-red-500 mt-4">{error}</p>}
-
-      <div className="mt-6">
-        {songs.length > 0 && (
-          <ul>
-            {songs.map((song) => (
-              <li key={song.id} className="border-b border-gray-200 py-2">
-                <p className="text-lg font-semibold">{song.name}</p>
-                <p className="text-gray-600">Author: {song.author}</p>
-                <p className="text-gray-600">Tone: {song.tone}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 };

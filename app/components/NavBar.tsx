@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import { useSongSelected } from '~/store';
 
 const Navbar: React.FC = () => {
   const [userName, setUserName] = useState<string | undefined>(undefined);
+  const {songSelected} = useSongSelected()
+
+  let playerParam
+
+  if(songSelected) playerParam = `/player/${songSelected.id}`
+  else playerParam =  `/player/none`
 
   useEffect(() => {
     const cookies = new Cookies();
@@ -23,10 +30,10 @@ const Navbar: React.FC = () => {
               <Link to="/piano" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Piano
               </Link>
-              <Link to="/player" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
+              <Link to={playerParam} className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Piano Player
               </Link>
-              <Link to="/search-song" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
+              <Link to="/search-songs" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
                 Search Song
               </Link>
               <Link to="/upload-song" className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">

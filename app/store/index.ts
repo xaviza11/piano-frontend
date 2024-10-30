@@ -1,2 +1,4 @@
 import useSongStore from "./song";
-export {useSongStore}
+import useSongsListStore from './songsList'
+import useSongSelected from "./songSelected";
+export {useSongStore, useSongsListStore, useSongSelected}

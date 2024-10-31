@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Tone from "tone";
 import { useSongStore } from "~/store";
+import { retrieveSong } from "~/handlers/retrieveSong";
+import { useParams } from "@remix-run/react";
+import { useAlert } from "~/context/AlertContext";
 
 const MidiPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -9,7 +12,26 @@ const MidiPlayer = () => {
     duration: string | null;
   }>({ note: null, duration: null });
 
-  const { song, name, author, tone } = useSongStore();
+  const { song, name, author, tone, setAuthor, setSong, setName, setTone } = useSongStore();
+  const { id } = useParams();
+  const {showAlert} = useAlert()
+
+  useEffect(() =>{
+    handleRetrieveSong()
+  })
+
+  const handleRetrieveSong = async () => {
+    if(!id || id === 'none') return
+    try {
+      const retrievedSong = await retrieveSong(id);
+      setAuthor(retrievedSong.song_data.author)
+      setSong(retrievedSong.song_data.notes)
+      setName(retrievedSong.song_data.name)
+      setTone(retrievedSong.song_data.tone)
+    } catch (error:any) {
+      showAlert(error.message, 'warning', true)
+    }
+  };
 
   const melody = song;
 

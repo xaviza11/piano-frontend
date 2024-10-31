@@ -8,7 +8,7 @@ interface Song {
 }
 
 interface SongListStore {
-    songs: Song[]; // Changed to Song[] for flexibility in array length
+    songs: Song[];
     setSongsList: (songsList: Song[]) => void;
 }
 

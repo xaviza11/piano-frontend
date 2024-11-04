@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import MidiUploader from "~/components/MidiUploader";
+import GenerateSong from "~/components/generateSong";
 
 export const meta: MetaFunction = () => {
   return [
@@ -27,8 +28,9 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="flex h-screen items-center justify-center bg-white">
-      <div className="flex flex-col items-center gap-16">
+      <div className="flex justify-center items-center gap-16">
         <MidiUploader />
+        <GenerateSong />
       </div>
     </div>
   );

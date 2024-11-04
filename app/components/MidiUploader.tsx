@@ -115,7 +115,7 @@ const MidiUploader = () => {
   };
 
   return (
-    <div className="flex flex-col items-center border border-blue-400 p-8 rounded-lg shadow-md max-w-md mx-auto">
+    <div className="flex flex-col items-center border border-blue-400 p-5 rounded-lg shadow-md max-w-md mx-auto">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">MIDI Uploader</h1>
 
       <div className="w-full mb-4">

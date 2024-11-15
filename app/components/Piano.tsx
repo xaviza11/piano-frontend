@@ -69,8 +69,8 @@ const Piano = () => {
   }, [activeKeys]);
 
   return (
-    <div className="piano-container flex flex-col items-center bg-black">
-      <div className="w-full flex justify-between mb-4">
+    <div className="piano-container flex flex-col items-center bg-black w-[40vw] min-w-[600px] md:min-w-[650px]">
+      <div className="w-full flex justify-around mb-4">
         <div className="mt-4 ml-4">
           <select
             value={instrument}
@@ -102,7 +102,7 @@ const Piano = () => {
         {notes.map(({ note, key, isBlack }) => (
           <div
             key={note}
-            className={`relative group w-10 h-32 border border-gray-300 m-1 cursor-pointer flex justify-center items-center font-bold rounded-t-md ${
+            className={`relative group w-8 h-32 border border-gray-300 m-1 cursor-pointer flex justify-center items-center font-bold rounded-t-md ${
               isBlack ? 'bg-black text-white' : 'bg-white text-black'
             } ${activeKeys.includes(key) ? 'text-white bg-blue-300' : ''}`}
             onMouseDown={() => {

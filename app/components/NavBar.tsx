@@ -18,38 +18,38 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="bg-blue-600 shadow-lg fixed top-0 w-full z-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center h-16">
+    <nav className="bg-blue-600 shadow-lg fixed top-0 w-full z-50 h-[8vh] sm:h-[7vh] flex justify-center">
+      <div className="max-w-7xl mx-auto flex justify-center items-center">
+        <div className="flex justify-center items-center h-8 flex w-[100vw]">
           <div className="flex-shrink-0">
-            <h1 className="text-white font-bold text-[2vw] ml-2">
+            <h1 className="text-white font-pacifico font-bold text-[2vw] ml-2">
               MusicApp
             </h1>
           </div>
 
           <div className="flex-grow flex justify-center">
-            <div className="space-x-2 text-white text-[1.5vw]">
+            <div className="space-x-2 text-white text-[1.3vw] font-pacifico">
               <Link
                 to="/piano"
-                className="hover:bg-blue-700 px-3 py-2 rounded-md"
+                className="px-3 py-2 rounded-md"
               >
                 Piano
               </Link>
               <Link
                 to={playerParam}
-                className="hover:bg-blue-700 px-3 py-2 rounded-md"
+                className="px-3 py-2 rounded-md"
               >
                 Piano Player
               </Link>
               <Link
                 to="/search-songs"
-                className="hover:bg-blue-700 px-3 py-2 rounded-md"
+                className="px-3 py-2 rounded-md"
               >
                 Search Song
               </Link>
               <Link
                 to="/upload-song"
-                className="hover:bg-blue-700 px-3 py-2 rounded-md"
+                className="px-3 py-2 rounded-md"
               >
                 Upload Song
               </Link>
@@ -61,16 +61,16 @@ const Navbar: React.FC = () => {
               Welcome, {userName}
             </div>
           ) : (
-            <div className="space-x-2 text-white text-[1.7vw] mr-2">
+            <div className="space-x-2 text-white text-[1.7vw] mr-2 font-pacifico">
               <Link
                 to="/signin"
-                className="hover:bg-blue-700 px-3 py-2 rounded-md"
+                className="px-3 py-2 rounded-md"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="hover:bg-blue-700 px-3 py-2 rounded-md"
+                className="px-3 py-2 rounded-md"
               >
                 Register
               </Link>

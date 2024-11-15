@@ -11,13 +11,12 @@ const MidiUploader = () => {
   const [midiFile, setMidiFile] = useState<File | null>(null);
 
   const { setSong, setName, setTone, setAuthor } = useSongStore();
-
-  const {showAlert} = useAlert()
+  const { showAlert } = useAlert();
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setMidiFile(file); 
+      setMidiFile(file);
     }
   };
 
@@ -31,16 +30,21 @@ const MidiUploader = () => {
           const midiJson = parseMidi(midiArray);
           const formattedMidi = transformMidiJson(midiJson);
 
-          await createSong({name: songTitle, tone: songTone, author: songAuthor, notes: formattedMidi.tracks[0]})
+          await createSong({
+            name: songTitle,
+            tone: songTone,
+            author: songAuthor,
+            notes: formattedMidi.tracks[0],
+          });
 
           setSong(formattedMidi.tracks[0]);
           setName(songTitle);
           setTone(songTone);
           setAuthor(songAuthor);
 
-          showAlert("Song uploaded successfully", "success", true)
+          showAlert("Song uploaded successfully", "success", true);
         } catch (error: any) {
-          showAlert(error.message, "warning", true)
+          showAlert(error.message, "warning", true);
         }
       };
       reader.readAsArrayBuffer(midiFile);
@@ -90,7 +94,7 @@ const MidiUploader = () => {
         format: header.format,
         numTracks: header.numTracks,
       },
-      tracks: formattedTracks.filter((track:any) => track.length > 0),
+      tracks: formattedTracks.filter((track: any) => track.length > 0),
     };
   };
 
@@ -115,12 +119,10 @@ const MidiUploader = () => {
   };
 
   return (
-    <div className="flex flex-col items-center border border-blue-400 p-5 rounded-lg shadow-md max-w-md mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">MIDI Uploader</h1>
-
+    <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-md max-w-md mx-auto h-[80vh] w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
       <div className="w-full mb-4">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-[3vh] text-white font-bold mb-2"
           htmlFor="title"
         >
           Title:
@@ -130,14 +132,14 @@ const MidiUploader = () => {
           type="text"
           value={songTitle}
           onChange={(e) => setSongTitle(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded bg-white text-black"
+          className="w-full p-2 rounded bg-white text-black h-[1vh] md:h-[5vh]"
           placeholder="Enter song title"
         />
       </div>
 
       <div className="w-full mb-4">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-[3vh] text-white font-bold mb-2"
           htmlFor="author"
         >
           Author:
@@ -147,14 +149,14 @@ const MidiUploader = () => {
           type="text"
           value={songAuthor}
           onChange={(e) => setSongAuthor(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded bg-white text-black"
+          className="w-full p-2 border border-gray-300 rounded bg-white text-black h-[1vh] md:h-[5vh]"
           placeholder="Enter author name"
         />
       </div>
 
       <div className="w-full mb-4">
         <label
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-[3vh] text-white font-bold mb-2"
           htmlFor="tone"
         >
           Tone:
@@ -163,7 +165,7 @@ const MidiUploader = () => {
           id="tone"
           value={songTone}
           onChange={(e) => setSongTone(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded bg-white text-gray-700"
+          className="w-full p-2 border border-gray-300 rounded bg-white text-gray-700 h-[1vh] md:h-[6vh]"
         >
           <optgroup label="Major">
             <option value="C Major">C Major</option>
@@ -196,16 +198,22 @@ const MidiUploader = () => {
         </select>
       </div>
 
-      <input
-        type="file"
-        accept=".mid,.midi"
-        onChange={handleFileUpload}
-        className="mb-4 p-2 border border-blue-500 rounded text-blue-500 cursor-pointer"
-      />
+      <div className="relative mb-2 w-[30vw] h-[5vh]">
+        <input
+          type="file"
+          accept=".mid,.midi"
+          onChange={handleFileUpload}
+          className="opacity-0 absolute z-50 w-full h-full cursor-pointer"
+        />
+        <div className="flex items-center justify-center p-1 border border-blue-500 rounded text-blue-500 bg-white cursor-pointer w-full h-full text-[2vh]">
+          {" "}
+          {midiFile ? midiFile.name : "Choose a MIDI file"}
+        </div>
+      </div>
 
       <button
         onClick={handleUpload}
-        className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        className="px-4 py-2 bg-green-600 text-white rounded-md text-[2vh] hover:bg-blue-700 font-pacifico"
       >
         Upload MIDI
       </button>

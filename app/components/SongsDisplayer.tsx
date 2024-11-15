@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useSongsListStore, useSongSelected} from '~/store/index';
+import { useSongsListStore, useSongSelected } from '~/store/index';
 import { useNavigate } from '@remix-run/react';
 
 type Song = {
@@ -10,12 +10,11 @@ type Song = {
 };
 
 const SongsDisplayer = () => {
+  const { songs } = useSongsListStore();
+  const { setSongSelected } = useSongSelected();
+  const navigate = useNavigate();
 
-  const {songs} = useSongsListStore()
-  const {setSongSelected} = useSongSelected()
-  const navigate = useNavigate()
-
-  const songsPerPage = 5; 
+  const songsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(0);
 
   const indexOfLastSong = (currentPage + 1) * songsPerPage;
@@ -34,51 +33,51 @@ const SongsDisplayer = () => {
     }
   };
 
-  const handleSelectSong = (song:Song) => {
-    setSongSelected(song)
-    navigate(`/player/${song.id}`)
-  }
+  const handleSelectSong = (song: Song) => {
+    setSongSelected(song);
+    navigate(`/player/${song.id}`);
+  };
 
   return (
-    <div className="flex flex-col items-center p-8 rounded-lg border border-blue-400 max-w-lg mx-auto shadow-lg pl-24 pr-24 h-[28rem] text-black">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Song List</h2>
-      
-      <table className="w-[26rem] text-left bg-white border border-gray-300 rounded-md h-[16rem]">
+    <div className="flex flex-col items-center p-2 rounded-lg max-w-lg mx-auto h-[74vh] md:h-[65vh] text-black w-[60vw] md:w-[60vw] lg:w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
+      <h2 className="text-[1em] md:text-2xl font-bold text-white mb-1 font-pacifico md:mt-4 ">Song List</h2>
+
+      <table className="w-[50vw] md:w-[50vw] lg:w-[35vw] text-left bg-white border border-gray-300 rounded-md h-[35vh] ">
         <thead>
           <tr>
-            <th className="px-4 py-2 border-b">Title</th>
-            <th className="px-4 py-2 border-b">Author</th>
-            <th className="px-4 py-2 border-b">Tone</th>
+            <th className="px-4 py-2 border-b text-[0.6em] md:text-base">Title</th>
+            <th className="px-4 py-2 border-b text-[0.6em] md:text-base">Author</th>
+            <th className="px-4 py-2 border-b text-[0.6em] md:text-base">Tone</th>
           </tr>
         </thead>
         <tbody>
           {currentSongs.map((song) => (
-            <tr 
-              key={song.id} 
+            <tr
+              key={song.id}
               className="cursor-pointer hover:bg-blue-100"
               onClick={() => handleSelectSong(song)}
             >
-              <td className="px-4 py-2 border-b">{song.name}</td>
-              <td className="px-4 py-2 border-b">{song.author}</td>
-              <td className="px-4 py-2 border-b">{song.tone}</td>
+              <td className="px-4 py-2 border-b text-[0.4em] md:text-base">{song.name}</td>
+              <td className="px-4 py-2 border-b text-[0.4em] md:text-base">{song.author}</td>
+              <td className="px-4 py-2 border-b text-[0.4em] md:text-base">{song.tone}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div className="flex justify-between w-[26rem] mt-4">
-        <button 
-          onClick={handlePreviousPage} 
-          disabled={currentPage === 0} 
-          className="w-24 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+      <div className="flex justify-between w-[50vw] md:w-[50vw] lg:w-[35vw] mt-4">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 0}
+          className="w-24 py-1 bg-green-600 text-white rounded-md hover:bg-green-500 text-[3vh] md:text-[2vh]"
         >
           Previous
         </button>
-        <h2 className='text-black mt-2'>{currentPage}</h2>
-        <button 
-          onClick={handleNextPage} 
-          disabled={indexOfLastSong >= songs.length} 
-          className="w-24 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        <h2 className="text-white mt-2">{currentPage}</h2>
+        <button
+          onClick={handleNextPage}
+          disabled={indexOfLastSong >= songs.length}
+          className="w-24 py-1 bg-green-600 text-white rounded-md hover:bg-green-500 text-[3vh] md:text-[2vh]"
         >
           Next
         </button>

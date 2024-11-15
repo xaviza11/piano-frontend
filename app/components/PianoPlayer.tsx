@@ -54,37 +54,37 @@ const MidiPlayer = () => {
   };
   
   return (
-    <div className="flex items-start space-x-4">
-      <div className="flex flex-col items-center justify-center text-center p-4 bg-blue-800 text-white rounded-md shadow-md w-72 h-64">
+    <div className="flex justify-center items-center space-x-4 font-montserrat font-bold">
+      <div className="flex flex-col items-center justify-center text-center p-4 bg-blue-800 text-white rounded-md shadow-md w-[30vw] h-[60vh]">
         <h2 className="text-xl font-bold">Song: {name}</h2>
         <p className="text-lg">Author: {author}</p>
         <p className="text-lg text-blue-100">Tone: {tone}</p>
       </div>
 
-      <div className="flex flex-col items-center bg-gray-100 p-10 rounded-lg shadow-md w-72 h-64">
+      <div className="flex flex-col items-center justify-center bg-gray-100 p-10 rounded-lg shadow-md w-[40vw] h-[60vh]">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Play song:</h2>
         <button
           onClick={playMelody}
           disabled={isPlaying}
-          className={`px-6 py-3 rounded-md font-semibold text-white transition duration-200 ${
+          className={`px-6 py-3 rounded-md font-semibold text-white transition duration-200 font-pacifico ${
             isPlaying
-              ? "bg-blue-400 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              ? "bg-green-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           }`}
         >
-          {isPlaying ? "Play..." : "Playing the melody"}
+          {isPlaying ? "Playing..." : "Play" }
         </button>
       </div>
 
-      <div className="flex flex-col space-y-8">
-        <div className="h-28 w-32 text-center p-4 bg-black text-white rounded-md shadow-md">
+      <div className="flex flex-col justify-between h-[60vh]">
+        <div className="h-[28vh] w-32 text-center p-4 bg-black text-white rounded-md shadow-md">
           <p className="text-xl">Note:</p>
           <h2 className="font-bold mt-4 text-xl text-green-300">
             {currentNote.note || "N/A"}
           </h2>
         </div>
 
-        <div className="h-28 w-32 text-center p-4 bg-black text-white rounded-md shadow-md">
+        <div className="h-[28vh] w-32 text-center p-4 bg-black text-white rounded-md shadow-md">
           <p className="text-xl">Duration:</p>
           <h2 className="font-bold mt-4 text-xl text-green-300">
             {currentNote.duration || "N/A"}

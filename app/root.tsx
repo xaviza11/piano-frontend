@@ -51,7 +51,7 @@ export function Layout({ children }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-[url('/background-app.jpg')] bg-cover bg-center">
         <Navbar />
         {children}
         <CookieConsent />

@@ -37,21 +37,16 @@ const GenerateTone = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
-      <div className="bg-blue-500 text-white text-center py-2 rounded-lg mb-4">
-        <h1 className="text-2xl font-bold">Melody Generator</h1>
-      </div>
-
-      <div className="p-8 bg-white border border-blue-400 rounded-lg">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Generate Song</h2>
+    <div>
+      <div className="p-8 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg h-[80vh] flex flex-col items-center justify-center font-montserrat font-bold">
 
         <form onSubmit={handleGenerate}>
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-white text-[3vh] font-bold mb-2"
               htmlFor="title"
             >
-              Title
+              Title:
             </label>
             <input
               type="text"
@@ -59,16 +54,16 @@ const GenerateTone = () => {
               placeholder="Song title"
               value={localTitle}
               onChange={(e) => setLocalTitle(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white h-[1vh] md:h-[5vh]"
             />
           </div>
 
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-white text-[3vh] font-bold mb-2"
               htmlFor="author"
             >
-              Author
+              Author:
             </label>
             <input
               type="text"
@@ -76,22 +71,22 @@ const GenerateTone = () => {
               placeholder="Author name"
               value={localAuthor}
               onChange={(e) => setLocalAuthor(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white h-[1vh] md:h-[5vh]"
             />
           </div>
 
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-white text-[3vh] font-bold mb-2"
               htmlFor="tone"
             >
-              Tone
+              Tone:
             </label>
             <select
               id="tone"
               value={localTone}
               onChange={(e) => setLocalTone(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded bg-white text-gray-700"
+              className="w-full p-2 border border-gray-300 rounded bg-white text-gray-700 text-[2vh]"
               defaultValue=""
             >
               <option value="" disabled>
@@ -129,12 +124,14 @@ const GenerateTone = () => {
             </select>
           </div>
 
+          <div className="w-full flex justify-center">
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className="px-4 py-2 bg-green-600 text-white rounded-md text-[2vh] hover:bg-green-500 font-pacifico"
           >
             Generate
           </button>
+          </div>
         </form>
       </div>
     </div>

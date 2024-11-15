@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
 
 export default function Error500Page() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white text-center text-black">
+    <div className="flex flex-col items-center justify-center h-screen bg-white text-center text-black bg-white">
       <h1 className="text-6xl font-bold">500</h1>
       <h2 className="text-2xl mt-4">Internal Server Error</h2>
       <p className="mt-2">Something went wrong. Please try again later.</p>

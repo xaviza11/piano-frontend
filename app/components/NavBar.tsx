@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-center items-center h-8 flex w-[100vw]">
           <div className="flex-shrink-0">
             <h1 className="text-white font-pacifico font-bold text-[2vw] ml-2">
-              MusicApp
+              Musapp
             </h1>
           </div>
 

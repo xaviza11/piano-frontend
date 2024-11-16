@@ -1,0 +1,110 @@
+{
+  "index": {
+    "title": "Musapp",
+    "description": "Your app for playing the piano.",
+    "keywords": "music, piano, app, Musapp",
+    "ogTitle": "Welcome to Musapp",
+    "ogDescription": "A great app for music lovers.",
+    "ogImage": "https://example.com/og-image.jpg",
+    "ogUrl": "https://example.com",
+    "twitterTitle": "Explore My App",
+    "twitterDescription": "Join us and explore amazing music.",
+    "twitterImage": "https://example.com/twitter-image.jpg"
+  },
+  "notFound": {
+    "title": "Page Not Found - Musapp",
+    "description": "Sorry, the page you are looking for does not exist on Musapp.",
+    "keywords": "404 error, page not found, Musapp",
+    "ogTitle": "Page Not Found",
+    "ogDescription": "The requested page could not be found. Return to the homepage to explore more on Musapp.",
+    "ogImage": "https://example.com/og-not-found-image.jpg",
+    "ogUrl": "https://example.com/404",
+    "twitterTitle": "Page Not Found",
+    "twitterDescription": "Sorry, we couldn't find the page you are looking for. Visit us for more content on Musapp.",
+    "twitterImage": "https://example.com/twitter-not-found-image.jpg"
+  },
+  "serverDown": {
+  "title": "Internal Server Error - Musapp",
+  "description": "Something went wrong on our end. Please try again later.",
+  "keywords": "500 error, internal server error, Musapp",
+  "ogTitle": "Internal Server Error",
+  "ogDescription": "We encountered an issue. Please try again later or return to the homepage.",
+  "ogImage": "https://example.com/og-500-error-image.jpg",
+  "ogUrl": "https://example.com/500",
+  "twitterTitle": "Internal Server Error",
+  "twitterDescription": "Oops! Something went wrong. Try again or visit our homepage.",
+  "twitterImage": "https://example.com/twitter-500-error-image.jpg"
+},
+"piano": {
+  "title": "Play the Piano Online - Musapp",
+  "description": "Play a virtual piano online with Musapp. Perfect for music lovers and aspiring pianists. Enjoy an interactive musical experience!",
+  "keywords": "piano, virtual piano, play piano online, music app, interactive piano, Musapp",
+  "ogTitle": "Play the Piano Online - Musapp",
+  "ogDescription": "Musapp offers an interactive virtual piano you can play from anywhere. Start playing your favorite songs or practice piano skills.",
+  "ogImage": "https://example.com/og-image.jpg",
+  "ogUrl": "https://example.com/piano",
+  "twitterTitle": "Play the Piano Online - Musapp",
+  "twitterDescription": "Enjoy a virtual piano experience with Musapp. Practice and play music anytime, anywhere.",
+  "twitterImage": "https://example.com/twitter-image.jpg"
+},
+"musicPlayer": {
+  "title": "Listen to Music with Our Player - Musapp",
+  "description": "Experience seamless music playback with the Musapp music player. Enjoy high-quality audio for your favorite songs.",
+  "keywords": "music player, audio player, Musapp, music streaming, online player",
+  "ogTitle": "Listen to Music with Our Player - Musapp",
+  "ogDescription": "Discover and enjoy your favorite tunes with the Musapp music player. High-quality audio and a user-friendly interface.",
+  "ogImage": "https://example.com/og-musicplayer-image.jpg",
+  "ogUrl": "https://example.com/musicplayer",
+  "twitterTitle": "Enjoy Music with the Musapp Player",
+  "twitterDescription": "Stream and listen to your favorite songs effortlessly with the Musapp music player.",
+  "twitterImage": "https://example.com/twitter-musicplayer-image.jpg"
+},
+"registerPage": {
+  "title": "Create Your Account - Musapp",
+  "description": "Join Musapp and start your musical journey. Register now for a personalized music experience.",
+  "keywords": "register, sign up, create account, Musapp registration",
+  "ogTitle": "Create Your Account - Musapp",
+  "ogDescription": "Sign up to access Musapp's personalized music features and community.",
+  "ogImage": "https://example.com/og-register-image.jpg",
+  "ogUrl": "https://example.com/register",
+  "twitterTitle": "Register and Join Musapp",
+  "twitterDescription": "Create an account on Musapp to enjoy personalized music features and more.",
+  "twitterImage": "https://example.com/twitter-register-image.jpg"
+},
+"searchPage": {
+  "title": "Search Songs - Musapp",
+  "description": "Find your favorite songs and explore new music with Musapp's search feature.",
+  "keywords": "search songs, music library, Musapp search",
+  "ogTitle": "Search Songs on Musapp",
+  "ogDescription": "Discover and explore songs from a wide selection with Musapp's search feature.",
+  "ogImage": "https://example.com/og-search-image.jpg",
+  "ogUrl": "https://example.com/search",
+  "twitterTitle": "Search Your Favorite Songs",
+  "twitterDescription": "Explore a wide selection of songs using Musapp's search functionality.",
+  "twitterImage": "https://example.com/twitter-search-image.jpg"
+},
+"signInPage": {
+  "title": "Sign In - Musapp",
+  "description": "Log in to your Musapp account and start playing the piano and exploring music.",
+  "keywords": "login, sign in, Musapp, music app, piano app",
+  "ogTitle": "Sign In to Musapp",
+  "ogDescription": "Access your Musapp account to enjoy music, play the piano, and more.",
+  "ogImage": "https://example.com/og-signin-image.jpg",
+  "ogUrl": "https://example.com/signin",
+  "twitterTitle": "Log In to Musapp",
+  "twitterDescription": "Sign in to Musapp and discover amazing music.",
+  "twitterImage": "https://example.com/twitter-signin-image.jpg"
+},
+"midiUploaderPage": {
+  "title": "Upload MIDI - Musapp",
+  "description": "Upload your MIDI files and generate your own music with Musapp. Start creating today.",
+  "keywords": "midi, upload, music creation, generate song, Musapp",
+  "ogTitle": "Upload MIDI Files and Generate Music - Musapp",
+  "ogDescription": "Upload your MIDI files and turn them into amazing songs with Musapp's music generation feature.",
+  "ogImage": "https://example.com/og-midi-upload-image.jpg",
+  "ogUrl": "https://example.com/midi-upload",
+  "twitterTitle": "Upload and Generate Music with Musapp",
+  "twitterDescription": "Upload your MIDI files to Musapp and create beautiful music.",
+  "twitterImage": "https://example.com/twitter-midi-upload-image.jpg"
+}
+}

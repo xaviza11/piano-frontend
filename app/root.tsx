@@ -17,6 +17,8 @@ import "./tailwind.css";
 import Navbar from "./components/NavBar";
 import CookieConsent from "./components/CookiesBanner";
 import { useEffect } from "react";
+import i18n from "./i18n"
+import { I18nextProvider } from 'react-i18next';
 
 export const loader: LoaderFunction = async ({ request }) => {
   const cookies = new Cookies(request.headers.get("cookie"), { path: "/" });
@@ -93,8 +95,10 @@ export default function App() {
   }, []);
 
   return (
+    <I18nextProvider i18n={i18n}>
     <AlertProvider>
       <Outlet />
     </AlertProvider>
+    </I18nextProvider>
   );
 }

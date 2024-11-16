@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import Alert from '~/components/Alert';
+import { useTranslation } from 'react-i18next';
 
 interface AlertContextType {
   showAlert: (message: string, type?: 'info' | 'error' | 'warning' | 'success', dismissible?: boolean) => void;
@@ -21,6 +22,9 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [alertType, setAlertType] = useState<'info' | 'error' | 'warning' | 'success'>("info");
   const [isAlertDismissible, setIsAlertDismissible] = useState(true);
 
+  const { t } = useTranslation("alerts")
+
+
   const showAlert = (message: string, type: 'info' | 'error' | 'warning' | 'success' = 'info', dismissible: boolean = true) => {
     setAlertMessage(message);
     setAlertType(type);
@@ -37,7 +41,7 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       {children}
       {isAlertVisible && (
         <Alert
-          message={alertMessage}
+          message={t(alertMessage)}
           type={alertType}
           dismissible={isAlertDismissible}
           onClose={hideAlert}

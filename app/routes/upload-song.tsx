@@ -1,27 +1,27 @@
 import type { MetaFunction } from "@remix-run/node";
 import MidiUploader from "~/components/MidiUploader";
-import GenerateSong from "~/components/generateSong";
+import GenerateSong from "~/components/GenerateSong";
+import { useTranslation } from "react-i18next";
 
 export const meta: MetaFunction = () => {
+  const { t } = useTranslation('seo');
+
   return [
-    //{ title: "New Remix App" },  //warn change it whit the language
-    //{ name: "description", content: "Welcome to Remix!" },  //warn change it whit the language
+    { title: t('midiUploaderPage.title') },
+    { name: "description", content: t('midiUploaderPage.description') },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     { charSet: "utf-8" },
     { name: "author", content: "Mateo Javier Zamora Lorente" },
-    //{ name: "keywords", content: "music, piano..." }, //warn change it whit the language
-
-    //{property: "og:title", content: "Tittle" },  //warn change it whit the language
-    //{ property: "og:description", content: "Description" },  //warn change it whit the language
-    { property: "og:image", content: "Image" },
-    //{ property: "og:url", content: "URL of the page" },  //warn change it whit the language
-
-    { name: "twitter:card", content: "summary_large_image" }, 
-    //{ name: "twitter:title", content: "Tittle" },  //warn change it whit the language
-    //{ name: "twitter:description", content: "Description" },  //warn change it whit the language
-    { name: "twitter:image", content: "URL of image" },
-
-    { name: "robots", content: "index, follow" }, 
+    { name: "keywords", content: t('midiUploaderPage.keywords') },
+    { property: "og:title", content: t('midiUploaderPage.ogTitle') },
+    { property: "og:description", content: t('midiUploaderPage.ogDescription') },
+    { property: "og:image", content: t('midiUploaderPage.ogImage') },
+    { property: "og:url", content: t('midiUploaderPage.ogUrl') },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: t('midiUploaderPage.twitterTitle') },
+    { name: "twitter:description", content: t('midiUploaderPage.twitterDescription') },
+    { name: "twitter:image", content: t('midiUploaderPage.twitterImage') },
+    { name: "robots", content: "index, follow" },
   ];
 };
 

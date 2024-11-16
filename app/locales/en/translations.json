@@ -1,0 +1,109 @@
+{
+  "signin": {
+    "signIn": "Sign In",
+    "email": "Email",
+    "emailAddress": "Email Address",
+    "password": "Password"
+  },
+  "register": {
+    "register": "Register",
+    "username": "Username",
+    "email": "Email",
+    "emailAddress": "Email Address",
+    "password": "Password",
+    "confirm": "Confirm Password"
+  },
+  "footer": {
+    "text": "Musapp. All rights reserved",
+    "about": " About Us",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "en": "English",
+    "es": "Spanish"
+  },
+  "navbar": {
+    "title": "Musapp",
+    "piano": "Piano",
+    "player": "Piano Player",
+    "search": "Search Song",
+    "upload": "Upload Song",
+    "signIn": "Sign In",
+    "register": "Register",
+    "welcome": "Welcome"
+  },
+  "generate": {
+    "title": "Title:",
+    "titleInput": "Song Title",
+    "author": "Author:",
+    "authorInput": "Author Name",
+    "tone": "Tone:",
+    "generate": "Generate"
+  },
+  "tones": {
+    "choose": "Choose a tone",
+      "C": "C",
+      "C#": "C#",
+      "D": "D",
+      "D#": "D#",
+      "E": "E",
+      "F": "F",
+      "F#": "F#",
+      "G": "G",
+      "G#": "G#",
+      "A": "A",
+      "A#": "A#",
+      "B": "B",
+      "major": "Major",
+      "minor": "Minor"
+  },
+  "uploader": {
+    "title": "TItle:",
+    "author": "Author:",
+    "authorInput": "Enter author name",
+    "titleInput": "Enter song title",
+    "tone": "Tone:",
+    "choose": "Choose a MIDI file",
+    "upload": "Upload MIDI"
+  },
+  "searcher": {
+    "author": "Author:",
+    "authorInput": "Author Name",
+    "name": "Song Name:",
+    "nameInput": "Song name",
+    "tone": "Tone:",
+    "search": "Search"
+  },
+  "list": {
+    "title": "Song List",
+    "name": "Name",
+    "author": "Author",
+    "tone": "Tone",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "player": {
+    "song": "Song: ",
+    "author": "Author: ",
+    "tone": "Tone: ",
+    "play": "Play",
+    "playSong": "Play Song:",
+    "playing": "Playing...",
+    "note": "Note: ",
+    "duration": "Duration: " 
+  },
+  "cookies": {
+    "banner": "We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.",
+    "accept": "Accept"
+  },
+  "notFound": {
+    "error": "Page not Found",
+    "text": "Sorry, the page are looking for does not exist.",
+    "back": "Go Back Home"
+  },
+  "serverDown": {
+    "error": "Internal Server Error",
+    "text": "Something went wrong. Please try again later.",
+    "back": "Go Back Home"
+  }
+}

@@ -3,6 +3,7 @@ import { generateSong } from "~/handlers/generateSong";
 import { useAlert } from "~/context/AlertContext";
 import { useSongStore } from "~/store";
 import { useNavigate } from "@remix-run/react";
+import { useTranslation } from "react-i18next";
 
 const GenerateTone = () => {
   const [localTone, setLocalTone] = useState<string>("");
@@ -10,8 +11,10 @@ const GenerateTone = () => {
   const [localAuthor, setLocalAuthor] = useState<string>("");
   const { showAlert } = useAlert();
 
+  const { t } = useTranslation("translation");
+
   const { setSong, setName, setTone, setAuthor } = useSongStore();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,12 +28,12 @@ const GenerateTone = () => {
       const response = await generateSong(localTone);
       showAlert(response.message, "success", true);
       setSong(response.notes);
-      setName(localTitle);   
+      setName(localTitle);
       setTone(localTone);
-      setAuthor(localAuthor); 
+      setAuthor(localAuthor);
       setTimeout(() => {
-        navigate('/player/none')
-      },5000)
+        navigate("/player/none");
+      }, 5000);
     } catch (error: any) {
       showAlert(error.message, "warning", true);
     }
@@ -39,19 +42,18 @@ const GenerateTone = () => {
   return (
     <div>
       <div className="p-8 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg h-[80vh] flex flex-col items-center justify-center font-montserrat font-bold">
-
         <form onSubmit={handleGenerate}>
           <div className="mb-4">
             <label
               className="block text-white text-[3vh] font-bold mb-2"
               htmlFor="title"
             >
-              Title:
+              {t("generate.title")}
             </label>
             <input
               type="text"
               id="title"
-              placeholder="Song title"
+              placeholder={t("generate.titleInput")}
               value={localTitle}
               onChange={(e) => setLocalTitle(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white h-[1vh] md:h-[5vh]"
@@ -63,12 +65,12 @@ const GenerateTone = () => {
               className="block text-white text-[3vh] font-bold mb-2"
               htmlFor="author"
             >
-              Author:
+              {t("generate.author")}
             </label>
             <input
               type="text"
               id="author"
-              placeholder="Author name"
+              placeholder={t("generate.authorInput")}
               value={localAuthor}
               onChange={(e) => setLocalAuthor(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 text-black bg-white h-[1vh] md:h-[5vh]"
@@ -80,7 +82,7 @@ const GenerateTone = () => {
               className="block text-white text-[3vh] font-bold mb-2"
               htmlFor="tone"
             >
-              Tone:
+              {t("generate.tone")}
             </label>
             <select
               id="tone"
@@ -90,47 +92,95 @@ const GenerateTone = () => {
               defaultValue=""
             >
               <option value="" disabled>
-                Choose a tone
+                {t("tones.choose")}
               </option>
 
-              <optgroup label="Major">
-                <option value="C Major">C Major</option>
-                <option value="C# Major">C# Major</option>
-                <option value="D Major">D Major</option>
-                <option value="D# Major">D# Major</option>
-                <option value="E Major">E Major</option>
-                <option value="F Major">F Major</option>
-                <option value="F# Major">F# Major</option>
-                <option value="G Major">G Major</option>
-                <option value="G# Major">G# Major</option>
-                <option value="A Major">A Major</option>
-                <option value="A# Major">A# Major</option>
-                <option value="B Major">B Major</option>
+              <optgroup label={t("tones.major")}>
+                <option value="C Major">
+                  {t("tones.C")} {t("tones.major")}
+                </option>
+                <option value="C# Major">
+                  {t("tones.C#")} {t("tones.major")}
+                </option>
+                <option value="D Major">
+                  {t("tones.D")} {t("tones.major")}
+                </option>
+                <option value="D# Major">
+                  {t("tones.D#")} {t("tones.major")}
+                </option>
+                <option value="E Major">
+                  {t("tones.E")} {t("tones.major")}
+                </option>
+                <option value="F Major">
+                  {t("tones.F")} {t("tones.major")}
+                </option>
+                <option value="F# Major">
+                  {t("tones.F#")} {t("tones.major")}
+                </option>
+                <option value="G Major">
+                  {t("tones.G")} {t("tones.major")}
+                </option>
+                <option value="G# Major">
+                  {t("tones.G#")} {t("tones.major")}
+                </option>
+                <option value="A Major">
+                  {t("tones.A")} {t("tones.major")}
+                </option>
+                <option value="A# Major">
+                  {t("tones.A#")} {t("tones.major")}
+                </option>
+                <option value="B Major">
+                  {t("tones.B")} {t("tones.major")}
+                </option>
               </optgroup>
-              <optgroup label="Minor">
-                <option value="C Minor">C Minor</option>
-                <option value="C# Minor">C# Minor</option>
-                <option value="D Minor">D Minor</option>
-                <option value="D# Minor">D# Minor</option>
-                <option value="E Minor">E Minor</option>
-                <option value="F Minor">F Minor</option>
-                <option value="F# Minor">F# Minor</option>
-                <option value="G Minor">G Minor</option>
-                <option value="G# Minor">G# Minor</option>
-                <option value="A Minor">A Minor</option>
-                <option value="A# Minor">A# Minor</option>
-                <option value="B Minor">B Minor</option>
+              <optgroup label={t("tones.minor")}>
+                <option value="C Minor">
+                  {t("tones.C")} {t("tones.minor")}
+                </option>
+                <option value="C# Minor">
+                  {t("tones.C#")} {t("tones.minor")}
+                </option>
+                <option value="D Minor">
+                  {t("tones.D")} {t("tones.minor")}
+                </option>
+                <option value="D# Minor">
+                  {t("tones.D#")} {t("tones.minor")}
+                </option>
+                <option value="E Minor">
+                  {t("tones.E")} {t("tones.minor")}
+                </option>
+                <option value="F Minor">
+                  {t("tones.F")} {t("tones.minor")}
+                </option>
+                <option value="F# Minor">
+                  {t("tones.F#")} {t("tones.minor")}
+                </option>
+                <option value="G Minor">
+                  {t("tones.G")} {t("tones.minor")}
+                </option>
+                <option value="G# Minor">
+                  {t("tones.G#")} {t("tones.minor")}
+                </option>
+                <option value="A Minor">
+                  {t("tones.A")} {t("tones.minor")}
+                </option>
+                <option value="A# Minor">
+                  {t("tones.A#")} {t("tones.minor")}
+                </option>
+                <option value="B Minor">
+                  {t("tones.B")} {t("tones.minor")}
+                </option>
               </optgroup>
             </select>
           </div>
 
           <div className="w-full flex justify-center">
-          <button
-            type="submit"
-            className="px-4 py-2 bg-green-600 text-white rounded-md text-[2vh] hover:bg-green-500 font-pacifico"
-          >
-            Generate
-          </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-green-600 text-white rounded-md text-[2vh] hover:bg-green-500 font-pacifico"
+            >
+              {t("generate.generate")}
+            </button>
           </div>
         </form>
       </div>

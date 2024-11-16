@@ -15,10 +15,12 @@
     "@remix-run/react": "^2.12.1",
     "@remix-run/serve": "^2.12.1",
     "@tonejs/midi": "^2.0.28",
+    "i18next": "^23.16.5",
     "isbot": "^4.1.0",
     "midi-file": "^1.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^15.1.1",
     "tone": "^15.0.4",
     "universal-cookie": "^7.2.1",
     "zustand": "^5.0.0"

@@ -3,6 +3,7 @@ import { parseMidi } from "midi-file";
 import { useSongStore } from "~/store";
 import { createSong } from "~/handlers/createSong";
 import { useAlert } from "~/context/AlertContext";
+import { useTranslation } from "react-i18next";
 
 const MidiUploader = () => {
   const [songTitle, setSongTitle] = useState("");
@@ -12,6 +13,8 @@ const MidiUploader = () => {
 
   const { setSong, setName, setTone, setAuthor } = useSongStore();
   const { showAlert } = useAlert();
+
+  const { t } = useTranslation();
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -125,7 +128,7 @@ const MidiUploader = () => {
           className="block text-[3vh] text-white font-bold mb-2"
           htmlFor="title"
         >
-          Title:
+          {t("uploader.title")}
         </label>
         <input
           id="title"
@@ -133,7 +136,7 @@ const MidiUploader = () => {
           value={songTitle}
           onChange={(e) => setSongTitle(e.target.value)}
           className="w-full p-2 rounded bg-white text-black h-[1vh] md:h-[5vh]"
-          placeholder="Enter song title"
+          placeholder={t("uploader.titleInput")}
         />
       </div>
 
@@ -142,7 +145,7 @@ const MidiUploader = () => {
           className="block text-[3vh] text-white font-bold mb-2"
           htmlFor="author"
         >
-          Author:
+          {t("uploader.author")}
         </label>
         <input
           id="author"
@@ -150,7 +153,7 @@ const MidiUploader = () => {
           value={songAuthor}
           onChange={(e) => setSongAuthor(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded bg-white text-black h-[1vh] md:h-[5vh]"
-          placeholder="Enter author name"
+          placeholder={t("uploader.authorInput")}
         />
       </div>
 
@@ -167,33 +170,85 @@ const MidiUploader = () => {
           onChange={(e) => setSongTone(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded bg-white text-gray-700 h-[1vh] md:h-[6vh]"
         >
-          <optgroup label="Major">
-            <option value="C Major">C Major</option>
-            <option value="C# Major">C# Major</option>
-            <option value="D Major">D Major</option>
-            <option value="D# Major">D# Major</option>
-            <option value="E Major">E Major</option>
-            <option value="F Major">F Major</option>
-            <option value="F# Major">F# Major</option>
-            <option value="G Major">G Major</option>
-            <option value="G# Major">G# Major</option>
-            <option value="A Major">A Major</option>
-            <option value="A# Major">A# Major</option>
-            <option value="B Major">B Major</option>
+          <option value="" disabled>
+            {t("tones.choose")}
+          </option>
+
+          <optgroup label={t("tones.major")}>
+            <option value="C Major">
+              {t("tones.C")} {t("tones.major")}
+            </option>
+            <option value="C# Major">
+              {t("tones.C#")} {t("tones.major")}
+            </option>
+            <option value="D Major">
+              {t("tones.D")} {t("tones.major")}
+            </option>
+            <option value="D# Major">
+              {t("tones.D#")} {t("tones.major")}
+            </option>
+            <option value="E Major">
+              {t("tones.E")} {t("tones.major")}
+            </option>
+            <option value="F Major">
+              {t("tones.F")} {t("tones.major")}
+            </option>
+            <option value="F# Major">
+              {t("tones.F#")} {t("tones.major")}
+            </option>
+            <option value="G Major">
+              {t("tones.G")} {t("tones.major")}
+            </option>
+            <option value="G# Major">
+              {t("tones.G#")} {t("tones.major")}
+            </option>
+            <option value="A Major">
+              {t("tones.A")} {t("tones.major")}
+            </option>
+            <option value="A# Major">
+              {t("tones.A#")} {t("tones.major")}
+            </option>
+            <option value="B Major">
+              {t("tones.B")} {t("tones.major")}
+            </option>
           </optgroup>
-          <optgroup label="Minor">
-            <option value="C Minor">C Minor</option>
-            <option value="C# Minor">C# Minor</option>
-            <option value="D Minor">D Minor</option>
-            <option value="D# Minor">D# Minor</option>
-            <option value="E Minor">E Minor</option>
-            <option value="F Minor">F Minor</option>
-            <option value="F# Minor">F# Minor</option>
-            <option value="G Minor">G Minor</option>
-            <option value="G# Minor">G# Minor</option>
-            <option value="A Minor">A Minor</option>
-            <option value="A# Minor">A# Minor</option>
-            <option value="B Minor">B Minor</option>
+          <optgroup label={t("tones.minor")}>
+            <option value="C Minor">
+              {t("tones.C")} {t("tones.minor")}
+            </option>
+            <option value="C# Minor">
+              {t("tones.C#")} {t("tones.minor")}
+            </option>
+            <option value="D Minor">
+              {t("tones.D")} {t("tones.minor")}
+            </option>
+            <option value="D# Minor">
+              {t("tones.D#")} {t("tones.minor")}
+            </option>
+            <option value="E Minor">
+              {t("tones.E")} {t("tones.minor")}
+            </option>
+            <option value="F Minor">
+              {t("tones.F")} {t("tones.minor")}
+            </option>
+            <option value="F# Minor">
+              {t("tones.F#")} {t("tones.minor")}
+            </option>
+            <option value="G Minor">
+              {t("tones.G")} {t("tones.minor")}
+            </option>
+            <option value="G# Minor">
+              {t("tones.G#")} {t("tones.minor")}
+            </option>
+            <option value="A Minor">
+              {t("tones.A")} {t("tones.minor")}
+            </option>
+            <option value="A# Minor">
+              {t("tones.A#")} {t("tones.minor")}
+            </option>
+            <option value="B Minor">
+              {t("tones.B")} {t("tones.minor")}
+            </option>
           </optgroup>
         </select>
       </div>
@@ -207,7 +262,7 @@ const MidiUploader = () => {
         />
         <div className="flex items-center justify-center p-1 border border-blue-500 rounded text-blue-500 bg-white cursor-pointer w-full h-full text-[2vh]">
           {" "}
-          {midiFile ? midiFile.name : "Choose a MIDI file"}
+          {midiFile ? midiFile.name :  `${t('uploader.choose')}`}
         </div>
       </div>
 
@@ -215,7 +270,7 @@ const MidiUploader = () => {
         onClick={handleUpload}
         className="px-4 py-2 bg-green-600 text-white rounded-md text-[2vh] hover:bg-blue-700 font-pacifico"
       >
-        Upload MIDI
+        {t('uploader.upload')}
       </button>
     </div>
   );

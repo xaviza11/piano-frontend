@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { useSongSelected } from "~/store";
+import { useTranslation } from "react-i18next";
 
 const Navbar: React.FC = () => {
   const [userName, setUserName] = useState<string | undefined>(undefined);
   const { songSelected } = useSongSelected();
+
+  const {t} = useTranslation()
 
   let playerParam;
 
@@ -23,7 +26,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-center items-center h-8 flex w-[100vw]">
           <div className="flex-shrink-0">
             <h1 className="text-white font-pacifico font-bold text-[2vw] ml-2">
-              Musapp
+              {t('navbar.title')}
             </h1>
           </div>
 
@@ -33,32 +36,32 @@ const Navbar: React.FC = () => {
                 to="/piano"
                 className="px-3 py-2 rounded-md"
               >
-                Piano
+                {t('navbar.piano')}
               </Link>
               <Link
                 to={playerParam}
                 className="px-3 py-2 rounded-md"
               >
-                Piano Player
+                {t('navbar.player')}
               </Link>
               <Link
                 to="/search-songs"
                 className="px-3 py-2 rounded-md"
               >
-                Search Song
+                {t('navbar.search')}
               </Link>
               <Link
                 to="/upload-song"
                 className="px-3 py-2 rounded-md"
               >
-                Upload Song
+                {t('navbar.upload')}
               </Link>
             </div>
           </div>
 
           {userName ? (
             <div className="text-white text-[1.7vw] font-medium mr-2">
-              Welcome, {userName}
+              {t('navbar.welcome')}, {userName}
             </div>
           ) : (
             <div className="space-x-2 text-white text-[1.7vw] mr-2 font-pacifico">
@@ -66,13 +69,13 @@ const Navbar: React.FC = () => {
                 to="/signin"
                 className="px-3 py-2 rounded-md"
               >
-                Sign In
+               {t('navbar.signIn')}
               </Link>
               <Link
                 to="/register"
                 className="px-3 py-2 rounded-md"
               >
-                Register
+                {t('navbar.register')}
               </Link>
             </div>
           )}

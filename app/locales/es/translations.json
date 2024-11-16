@@ -1,0 +1,109 @@
+{
+  "signin": {
+    "signIn": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "emailAddress": "Dirección de correo electrónico",
+    "password": "Contraseña"
+  },
+  "register": {
+    "register": "Registrarse",
+    "username": "Nombre de usuario",
+    "email": "Correo electrónico",
+    "emailAddress": "Dirección de correo electrónico",
+    "password": "Contraseña",
+    "confirm": "Confirmar contraseña"
+  },
+  "footer": {
+    "text": "Musapp. Todos los derechos reservados",
+    "about": "Sobre nosotros",
+    "contact": "Contacto",
+    "privacy": "Política de privacidad",
+    "terms": "Términos",
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "navbar": {
+    "title": "Musapp",
+    "piano": "Piano",
+    "player": "Reproductor de Piano",
+    "search": "Buscar Canción",
+    "upload": "Subir Canción",
+    "signIn": "Iniciar sesión",
+    "register": "Registrarse",
+    "welcome": "Bienvenido"
+  },
+  "generate": {
+    "title": "Título:",
+    "titleInput": "Título de la canción",
+    "author": "Autor:",
+    "authorInput": "Nombre del autor",
+    "tone": "Tono:",
+    "generate": "Generar"
+  },
+  "tones": {
+    "choose": "Elige un tono",
+    "C": "Do",
+    "C#": "Do#",
+    "D": "Re",
+    "D#": "Re#",
+    "E": "Mi",
+    "F": "Fa",
+    "F#": "Fa#",
+    "G": "Sol",
+    "G#": "Sol#",
+    "A": "La",
+    "A#": "La#",
+    "B": "Si",
+    "major": "Mayor",
+    "minor": "Menor"
+  },
+  "uploader": {
+    "title": "Título:",
+    "author": "Autor:",
+    "authorInput": "Introduce el nombre del autor",
+    "titleInput": "Introduce el título de la canción",
+    "tone": "Tono:",
+    "choose": "Elige un archivo MIDI",
+    "upload": "Subir MIDI"
+  },
+  "searcher": {
+    "author": "Autor:",
+    "authorInput": "Nombre del autor",
+    "name": "Nombre de la canción:",
+    "nameInput": "Nombre de la canción",
+    "tone": "Tono:",
+    "search": "Buscar"
+  },
+  "list": {
+    "title": "Lista de Canciones",
+    "name": "Nombre",
+    "author": "Autor",
+    "tone": "Tono",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "player": {
+    "song": "Canción: ",
+    "author": "Autor: ",
+    "tone": "Tono: ",
+    "play": "Reproducir",
+    "playSong": "Reproducir canción:",
+    "playing": "Reproduciendo...",
+    "note": "Nota: ",
+    "duration": "Duración: "
+  },
+  "cookies": {
+    "banner": "Usamos cookies para mejorar tu experiencia. Al continuar visitando este sitio, aceptas nuestro uso de cookies.",
+    "accept": "Aceptar"
+  },
+  "notFound": {
+    "error": "Página no encontrada",
+    "text": "Lo sentimos, la página que estás buscando no existe.",
+    "back": "Volver a la página principal"
+  },
+  "serverDown": {
+    "error": "Error interno del servidor",
+    "text": "Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
+    "back": "Volver a la página principal"
+  }
+}

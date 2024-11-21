@@ -21,7 +21,7 @@ const MidiPlayer = () => {
 
   useEffect(() =>{
     handleRetrieveSong()
-  })
+  }, [])
 
   const handleRetrieveSong = async () => {
     if(!id || id === 'none') return

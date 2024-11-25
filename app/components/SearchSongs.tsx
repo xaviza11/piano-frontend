@@ -25,7 +25,7 @@ const SearchSongs: React.FC = () => {
   };
 
   return (
-    <div className="p-4 max-w-lg mx-auto bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg mt-1 h-auto md:h-[65vh] w-[20vw] md:w-[50vw] lg:w-[30vw] text-black flex flex-col justify-center font-montserrat font-bold">
+    <div id="search-songs" className="p-4 max-w-lg mx-auto bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg mt-1 h-auto md:h-[65vh] w-[20vw] md:w-[50vw] lg:w-[30vw] text-black flex flex-col justify-center font-montserrat font-bold">
       <div className="mb-6">
         <label
           className="block text-white text-[3vh] font-bold mb-2"

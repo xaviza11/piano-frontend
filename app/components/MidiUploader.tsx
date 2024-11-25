@@ -122,7 +122,7 @@ const MidiUploader = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-md max-w-md mx-auto h-[80vh] w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
+    <div id="midi-uploader" className="flex flex-col items-center justify-center p-5 rounded-lg shadow-md max-w-md mx-auto h-[80vh] w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
       <div className="w-full mb-4">
         <label
           className="block text-[3vh] text-white font-bold mb-2"

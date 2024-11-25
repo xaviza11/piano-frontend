@@ -42,7 +42,7 @@ const SongsDisplayer = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p-2 rounded-lg max-w-lg mx-auto h-[74vh] md:h-[65vh] text-black w-[60vw] md:w-[60vw] lg:w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
+    <div id="songs-displayer" className="flex flex-col items-center p-2 rounded-lg max-w-lg mx-auto h-[74vh] md:h-[65vh] text-black w-[60vw] md:w-[60vw] lg:w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
       <h2 className="text-[1em] md:text-2xl font-bold text-white mb-1 font-pacifico md:mt-4 ">{t('list.title')}</h2>
 
       <table className="w-[50vw] md:w-[50vw] lg:w-[35vw] text-left bg-white border border-gray-300 rounded-md h-[35vh] ">

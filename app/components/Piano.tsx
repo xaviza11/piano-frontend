@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import * as Tone from 'tone';
+import React, { useEffect, useState } from "react";
+import * as Tone from "tone";
 
 const Piano = () => {
   const [activeKeys, setActiveKeys] = useState<string[]>([]);
-  const [instrument, setInstrument] = useState<string>('FMSynth');
+  const [instrument, setInstrument] = useState<string>("FMSynth");
   const [volume, setVolume] = useState<number>(0);
 
   const playNote = (note: any) => {
@@ -11,70 +11,70 @@ const Piano = () => {
     const options = { volume };
 
     switch (instrument) {
-      case 'FMSynth':
+      case "FMSynth":
         synth = new Tone.FMSynth(options).toDestination();
         break;
-      case 'AMSynth':
+      case "AMSynth":
         synth = new Tone.AMSynth(options).toDestination();
         break;
-      case 'MonoSynth':
+      case "MonoSynth":
         synth = new Tone.MonoSynth(options).toDestination();
         break;
-      case 'Synth':
+      case "Synth":
         synth = new Tone.Synth(options).toDestination();
         break;
       default:
         synth = new Tone.Synth(options).toDestination();
     }
-    synth.triggerAttackRelease(note, '8n');
+    synth.triggerAttackRelease(note, "8n");
   };
 
   const notes = [
-    { note: 'C4', key: 'A', isBlack: false },
-    { note: 'C#4', key: 'W', isBlack: true },
-    { note: 'D4', key: 'S', isBlack: false },
-    { note: 'D#4', key: 'E', isBlack: true },
-    { note: 'E4', key: 'D', isBlack: false },
-    { note: 'F4', key: 'F', isBlack: false },
-    { note: 'F#4', key: 'T', isBlack: true },
-    { note: 'G4', key: 'J', isBlack: false },
-    { note: 'G#4', key: 'I', isBlack: true },
-    { note: 'A4', key: 'K', isBlack: false },
-    { note: 'A#4', key: 'O', isBlack: true },
-    { note: 'B4', key: 'L', isBlack: false },
-    { note: 'C5', key: 'Ñ', isBlack: false },
+    { note: "C4", key: "A", isBlack: false },
+    { note: "C#4", key: "W", isBlack: true },
+    { note: "D4", key: "S", isBlack: false },
+    { note: "D#4", key: "E", isBlack: true },
+    { note: "E4", key: "D", isBlack: false },
+    { note: "F4", key: "F", isBlack: false },
+    { note: "F#4", key: "T", isBlack: true },
+    { note: "G4", key: "J", isBlack: false },
+    { note: "G#4", key: "I", isBlack: true },
+    { note: "A4", key: "K", isBlack: false },
+    { note: "A#4", key: "O", isBlack: true },
+    { note: "B4", key: "L", isBlack: false },
+    { note: "C5", key: "Ñ", isBlack: false },
   ];
 
   const handleKeyPress = (event: any) => {
     const key = event.key.toUpperCase();
-    const noteObj = notes.find(n => n.key === key);
+    const noteObj = notes.find((n) => n.key === key);
     if (noteObj && !activeKeys.includes(noteObj.key)) {
       playNote(noteObj.note);
-      setActiveKeys(prevKeys => [...prevKeys, noteObj.key]);
+      setActiveKeys((prevKeys) => [...prevKeys, noteObj.key]);
     }
   };
 
   const handleKeyRelease = (event: any) => {
     const key = event.key.toUpperCase();
-    setActiveKeys(prevKeys => prevKeys.filter(k => k !== key));
+    setActiveKeys((prevKeys) => prevKeys.filter((k) => k !== key));
   };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    window.addEventListener('keyup', handleKeyRelease);
+    window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("keyup", handleKeyRelease);
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-      window.removeEventListener('keyup', handleKeyRelease);
+      window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("keyup", handleKeyRelease);
     };
   }, [activeKeys]);
 
   return (
-    <div className="piano-container flex flex-col items-center bg-black w-[40vw] min-w-[600px] md:min-w-[650px]">
+    <div className="piano-container flex flex-col items-center bg-black w-[40vw] min-w-[600px] md:min-w-[650px] portrait:hidden">
       <div className="w-full flex justify-around mb-4">
         <div className="mt-4 ml-4">
           <select
             value={instrument}
-            onChange={e => setInstrument(e.target.value)}
+            onChange={(e) => setInstrument(e.target.value)}
             className="p-2 bg-white rounded-md text-black"
           >
             <option value="FMSynth">FM Synth</option>
@@ -103,13 +103,15 @@ const Piano = () => {
           <div
             key={note}
             className={`relative group w-8 h-32 border border-gray-300 m-1 cursor-pointer flex justify-center items-center font-bold rounded-t-md ${
-              isBlack ? 'bg-black text-white' : 'bg-white text-black'
-            } ${activeKeys.includes(key) ? 'text-white bg-blue-300' : ''}`}
+              isBlack ? "bg-black text-white" : "bg-white text-black"
+            } ${activeKeys.includes(key) ? "text-white bg-blue-300" : ""}`}
             onMouseDown={() => {
               playNote(note);
-              setActiveKeys(prevKeys => [...prevKeys, key]);
+              setActiveKeys((prevKeys) => [...prevKeys, key]);
             }}
-            onMouseUp={() => setActiveKeys(prevKeys => prevKeys.filter(k => k !== key))}
+            onMouseUp={() =>
+              setActiveKeys((prevKeys) => prevKeys.filter((k) => k !== key))
+            }
           >
             {key}
           </div>

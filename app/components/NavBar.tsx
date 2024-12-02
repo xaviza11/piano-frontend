@@ -23,15 +23,15 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-blue-600 shadow-lg fixed top-0 w-full z-50 h-[8vh] sm:h-[7vh] flex justify-center">
       <div className="max-w-7xl mx-auto flex justify-center items-center">
-        <div className="flex justify-center items-center h-8 flex w-[100vw]">
+        <div className="flex justify-center items-center h-8 flex w-[100vw] portrait:w-[90vw]">
           <div className="flex-shrink-0">
-            <h1 className="text-white font-pacifico font-bold text-[2vw] ml-2">
+            <h1 className="text-white font-pacifico font-bold text-[2vw] ml-2 portrait:hidden">
               {t('navbar.title')}
             </h1>
           </div>
 
           <div className="flex-grow flex justify-center">
-            <div className="space-x-2 text-white text-[1.3vw] font-pacifico">
+            <div className="space-x-2 text-white text-[1.3vw] font-pacifico portrait:text-[1.3vw] portrait:space-x-1">
               <Link
                 to="/piano"
                 className="px-3 py-2 rounded-md"
@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
               {t('navbar.welcome')}, {userName}
             </div>
           ) : (
-            <div className="space-x-2 text-white text-[1.7vw] mr-2 font-pacifico">
+            <div className="space-x-2 text-white text-[1.7vw] mr-2 font-pacifico portrait:text-[0.8vw] portrait:space-x-1">
               <Link
                 to="/signin"
                 className="px-3 py-2 rounded-md"

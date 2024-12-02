@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
           <div>
-            <ul className="flex space-x-4 justify-center text-[1.2vw]">
+            <ul className="flex space-x-4 justify-center text-[1.2vw] portrait:space-x-2">
               <li>
                 <Link to="/about" className="hover:text-blue-300">
                   {t('footer.about')}

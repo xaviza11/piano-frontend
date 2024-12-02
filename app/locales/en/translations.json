@@ -105,5 +105,8 @@
     "error": "Internal Server Error",
     "text": "Something went wrong. Please try again later.",
     "back": "Go Back Home"
+  },
+  "rotate": {
+    "warning": "Please rotate your device to landscape mode to use the piano."
   }
 }

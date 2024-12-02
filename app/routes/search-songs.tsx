@@ -28,7 +28,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-row items-center gap-16">
+      <div className="flex flex-row items-center gap-16 portrait:flex-col portrait:gap-8 portrait:overflow-x-auto">
         <SearchSong />
         <SongsDisplayer />
       </div>

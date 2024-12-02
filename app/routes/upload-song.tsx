@@ -28,7 +28,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="flex justify-center items-center gap-16">
+      <div className="flex justify-center items-center gap-16 portrait:flex-col portrait:gap-32">
         <MidiUploader />
         <GenerateSong />
       </div>

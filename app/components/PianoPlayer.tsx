@@ -57,14 +57,14 @@ const MidiPlayer = () => {
   };
   
   return (
-    <div className="flex justify-center items-center space-x-4 font-montserrat font-bold">
-      <div className="flex flex-col items-center justify-center text-center p-4 bg-blue-800 text-white rounded-md shadow-md w-[30vw] h-[60vh]">
+    <div className="flex justify-center items-center space-x-4 font-montserrat font-bold portrait:flex-col portrait:mt-[40vh]">
+      <div className="flex flex-col items-center justify-center text-center p-4 bg-blue-800 text-white rounded-md shadow-md w-[30vw] h-[60vh] portrait:w-[80vw] portrait:h-[30vh] portrait:mb-[1vh] portrait:ml-[4vw]">
         <h2 className="text-xl font-bold">{t('player.song')} {name}</h2>
         <p className="text-lg">{t('player.author')} {author}</p>
         <p className="text-lg text-blue-100">{t('player.tone')} {tone}</p>
       </div>
 
-      <div className="flex flex-col items-center justify-center bg-gray-100 p-10 rounded-lg shadow-md w-[40vw] h-[60vh]">
+      <div className="flex flex-col items-center justify-center bg-gray-100 p-10 rounded-lg shadow-md w-[40vw] h-[60vh] portrait:w-[80vw] portrait:h-[30vh] portrait:p-0 portrait:mb-[1vh]">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">{t('player.playSong')}</h2>
         <button
           onClick={playMelody}
@@ -79,15 +79,15 @@ const MidiPlayer = () => {
         </button>
       </div>
 
-      <div className="flex flex-col justify-between h-[60vh]">
-        <div className="h-[28vh] w-32 text-center p-4 bg-black text-white rounded-md shadow-md">
+      <div className="flex flex-col justify-between h-[60vh] portrait:flex-row portrait:gap-6">
+        <div className="h-[28vh] w-32 text-center p-4 bg-black text-white rounded-md shadow-md portrait:h-[18vh]">
           <p className="text-xl">{t('player.playing')}</p>
           <h2 className="font-bold mt-4 text-xl text-green-300">
             {currentNote.note || "N/A"}
           </h2>
         </div>
 
-        <div className="h-[28vh] w-32 text-center p-4 bg-black text-white rounded-md shadow-md">
+        <div className="h-[28vh] w-32 text-center p-4 bg-black text-white rounded-md shadow-md portrait:h-[18vh]">
           <p className="text-xl">{t('player.duration')}</p>
           <h2 className="font-bold mt-4 text-xl text-green-300">
             {currentNote.duration || "N/A"}

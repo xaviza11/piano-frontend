@@ -26,10 +26,15 @@ export const meta: MetaFunction = () => {
 
 
 export default function Index() {
+  const { t } = useTranslation('seo'); 
+
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="flex flex-col items-center gap-16">
         <Piano />
+        <div className="hidden portrait:flex justify-center items-center text-center bg-black text-white p-4 rounded-md fixed top-0 left-0 w-full z-50 h-[100vh] ">
+          <h2 className="text-lg font-bold">{t('piano.warning')}</h2>
+        </div>
       </div>
     </div>
   );

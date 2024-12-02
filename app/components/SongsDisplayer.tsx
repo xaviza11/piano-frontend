@@ -42,10 +42,10 @@ const SongsDisplayer = () => {
   };
 
   return (
-    <div id="songs-displayer" className="flex flex-col items-center p-2 rounded-lg max-w-lg mx-auto h-[74vh] md:h-[65vh] text-black w-[60vw] md:w-[60vw] lg:w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold">
+    <div id="songs-displayer" className="flex flex-col items-center p-2 rounded-lg max-w-lg mx-auto h-[74vh] md:h-[65vh] text-black w-[60vw] md:w-[60vw] lg:w-[40vw] bg-gradient-to-r from-blue-600 to-blue-500 font-montserrat font-bold portrait:h-[55vh] portrait:mb-[40vh] portrait:w-[80vw]">
       <h2 className="text-[1em] md:text-2xl font-bold text-white mb-1 font-pacifico md:mt-4 ">{t('list.title')}</h2>
 
-      <table className="w-[50vw] md:w-[50vw] lg:w-[35vw] text-left bg-white border border-gray-300 rounded-md h-[35vh] ">
+      <table className="w-[50vw] md:w-[50vw] lg:w-[35vw] text-left bg-white border border-gray-300 rounded-md h-[35vh] portrait:w-[70vw]">
         <thead>
           <tr>
             <th className="px-4 py-2 border-b text-[0.6em] md:text-base">{t('list.name')}</th>
@@ -68,7 +68,7 @@ const SongsDisplayer = () => {
         </tbody>
       </table>
 
-      <div className="flex justify-between w-[50vw] md:w-[50vw] lg:w-[35vw] mt-4">
+      <div className="flex justify-between w-[50vw] md:w-[50vw] lg:w-[35vw] mt-4 portrait: w-[90%]">
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 0}

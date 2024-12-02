@@ -105,5 +105,8 @@
     "error": "Error interno del servidor",
     "text": "Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
     "back": "Volver a la página principal"
+  },
+  "rotate": {
+    "waring": "Por favor, gira tu dispositivo a modo horizontal (landscape) para usar el piano."
   }
 }

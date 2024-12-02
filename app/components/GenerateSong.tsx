@@ -41,7 +41,7 @@ const GenerateTone = () => {
 
   return (
     <div id="generate-song">
-      <div className="p-8 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg h-[80vh] flex flex-col items-center justify-center font-montserrat font-bold">
+      <div className="p-8 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg h-[80vh] flex flex-col items-center justify-center font-montserrat font-bold portrait:w-[80vw] portrait:h-[80vh] portrait:mb-[20vh]">
         <form onSubmit={handleGenerate}>
           <div className="mb-4">
             <label
